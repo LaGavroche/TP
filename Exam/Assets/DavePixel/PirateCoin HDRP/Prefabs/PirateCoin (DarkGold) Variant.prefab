@@ -131,4 +131,4 @@ MonoBehaviour:
   respawnTime: 3
   coinValue: 10
   collectEffect: {fileID: 0}
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: 02f98902d77f7431cb0c64b9fe4744fc, type: 3}

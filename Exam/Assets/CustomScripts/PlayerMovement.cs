@@ -24,14 +24,21 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Input WASD (j'ai un clavier suisse sorry)
+        // Input WASD + ZQSD (j'ai un clavier suisse déso :))
         float horizontal = 0f;
         float vertical = 0f;
 
-        if (Input.GetKey(KeyCode.W)) vertical = 1f;      // Avant
-        if (Input.GetKey(KeyCode.S)) vertical = -1f;     // Arrière  
-        if (Input.GetKey(KeyCode.A)) horizontal = -1f;   // Tourner gauche
-        if (Input.GetKey(KeyCode.D)) horizontal = 1f;    // Tourner droite
+        // Avant (W ou Z)
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z)) vertical = 1f;
+
+        // Arrière (S)
+        if (Input.GetKey(KeyCode.S)) vertical = -1f;
+
+        // Tourner gauche (A ou Q)
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q)) horizontal = -1f;
+
+        // Tourner droite (D)
+        if (Input.GetKey(KeyCode.D)) horizontal = 1f;
 
         // Rotation gauche/droite
         transform.Rotate(0f, horizontal * rotationSpeed * Time.deltaTime, 0f);

@@ -87,6 +87,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1361257874134610457, guid: 25cb4f9745fb8654c812036d1fee8920, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3041071877811237522}
+    - targetCorrespondingSourceObject: {fileID: 1361257874134610457, guid: 25cb4f9745fb8654c812036d1fee8920, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6829657099611883059}
   m_SourcePrefab: {fileID: 100100000, guid: 25cb4f9745fb8654c812036d1fee8920, type: 3}
 --- !u!1 &8365458078107047979 stripped
 GameObject:
@@ -112,3 +115,20 @@ MonoBehaviour:
   enableBobbing: 1
   bobSpeed: 2
   bobHeight: 0.3
+--- !u!114 &6829657099611883059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8365458078107047979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8f1d9c467fd1d47b044d9bd7b28d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  respawnTime: 3
+  coinValue: 10
+  collectEffect: {fileID: 0}
+  collectSound: {fileID: 0}

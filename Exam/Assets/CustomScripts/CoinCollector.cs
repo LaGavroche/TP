@@ -14,15 +14,25 @@ public class CoinCollector : MonoBehaviour
 
     private Vector3 originalPosition;
     private bool isCollected = false;
+    private Renderer coinRenderer;
+    private Collider coinCollider;
 
     void Start()
     {
         originalPosition = transform.position;
+        coinRenderer = GetComponent<Renderer>();
+        coinCollider = GetComponent<Collider>();
+
+        // Vérification des composants
+        if (coinRenderer == null)
+            Debug.LogError("Aucun Renderer trouvé sur " + gameObject.name);
+        if (coinCollider == null)
+            Debug.LogError("Aucun Collider trouvé sur " + gameObject.name);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Collision détectée avec: {other.name}, Tag: {other.tag}"); // Debug
+        Debug.Log($"Collision détectée avec: {other.name}, Tag: {other.tag}");
 
         if (other.CompareTag(playerTag) && !isCollected)
         {
@@ -42,16 +52,19 @@ public class CoinCollector : MonoBehaviour
         }
         else
         {
-            Debug.LogError("ScoreManager.Instance est null ! Assure-toi qu'il y a un ScoreManager dans la scène.");
+            Debug.LogError("ScoreManager.Instance est null !");
         }
 
         // Effets
         PlayCollectEffects();
 
-        // Désactiver la pièce
-        gameObject.SetActive(false);
+        // Cacher la pièce au lieu de la désactiver
+        if (coinRenderer != null)
+            coinRenderer.enabled = false;
+        if (coinCollider != null)
+            coinCollider.enabled = false;
 
-        // Programmer le respawn
+        // Programmer le respawn (maintenant la coroutine peut s'exécuter)
         StartCoroutine(RespawnCoin());
 
         Debug.Log($"Pièce collectée ! +{coinValue} points");
@@ -63,7 +76,12 @@ public class CoinCollector : MonoBehaviour
 
         // Réapparaître
         transform.position = originalPosition;
-        gameObject.SetActive(true);
+
+        if (coinRenderer != null)
+            coinRenderer.enabled = true;
+        if (coinCollider != null)
+            coinCollider.enabled = true;
+
         isCollected = false;
 
         Debug.Log("Pièce respawnée !");

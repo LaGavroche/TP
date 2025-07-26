@@ -18,7 +18,6 @@ public class ScoreManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
             Debug.Log("ScoreManager Instance créée");
         }
         else
